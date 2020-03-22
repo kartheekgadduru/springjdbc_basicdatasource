@@ -1,0 +1,27 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+			"http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+			
+			<beans>
+			
+				<bean id="dbs" class="org.apache.commons.dbcp2.BasicDataSource"> 
+				<property name="driverClassName" value="org.postgresql.Driver"></property>
+				<property name="url" value="jdbc:postgresql://127.0.0.1:5432/smart-brain"></property>
+				<property name="username" value="postgres"></property>
+				<property name="password" value="superuser"></property>
+				<property name="maxTotal" value="15"></property>
+				<property name="maxIdle" value="5"></property>
+				<property name="maxWaitMillis" value="5000"></property>
+				
+				</bean>
+				
+				<bean id = "dao" class="com.studentdao.StudentDaoImp">
+					<property name="ds" ref="dbs"></property>
+				</bean>
+				<bean id="studentBusinessImpl" class="com.business.StudentBusinessImpl">
+					<property name="dataAcessObject" ref = "dao"></property>	
+				
+							
+				</bean>
+			
+			
+			</beans>
